@@ -49,7 +49,7 @@ foreach ( $bp_array as $key => $nav_item ) {
 	if ( bp_is_active( $key ) ) {
 
 		?><ul id="bbw-<?php echo $key; ?>" class="bbw-module">
-			<li class="bbw-module-title"><?php esc_html_e( $nav_item[0], 'buddybar-widget' ); ?></li><?php
+			<li class="bbw-module-title"><?php echo esc_html( $nav_item[0] ); ?></li><?php
 
 			unset( $nav_item[0] );
 

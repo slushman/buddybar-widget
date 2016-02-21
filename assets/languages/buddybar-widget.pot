@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: BuddyBar Widget\n"
-"POT-Creation-Date: 2016-02-21 11:25-0600\n"
-"PO-Revision-Date: 2016-02-21 11:24-0600\n"
+"POT-Creation-Date: 2016-02-21 12:00-0600\n"
+"PO-Revision-Date: 2016-02-21 12:00-0600\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -43,6 +43,22 @@ msgstr ""
 
 #: classes/class-widget.php:38
 msgid "Display the BuddyPress Bar in a widget."
+msgstr ""
+
+#: classes/class-widget.php:175
+msgid "Activity"
+msgstr ""
+
+#: classes/class-widget.php:176
+msgid "Messages"
+msgstr ""
+
+#: classes/class-widget.php:177
+msgid "Friends"
+msgstr ""
+
+#: classes/class-widget.php:178
+msgid "Groups"
 msgstr ""
 
 #: classes/views/login-form.php:17

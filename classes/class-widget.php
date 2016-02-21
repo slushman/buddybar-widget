@@ -172,10 +172,10 @@ class Slushman_BuddyBar_Widget extends WP_Widget {
 
 		$temp = array();
 		$keys = array(
-			array( 'activity', 	'Activity' ),
-			array( 'messages', 	'Messages' ),
-			array( 'friends', 	'Friends' ),
-			array( 'groups', 	'Groups' )
+			array( 'activity', 	__( 'Activity', 'buddybar-widget' ) ),
+			array( 'messages', 	__( 'Messages', 'buddybar-widget' ) ),
+			array( 'friends', 	__( 'Friends', 'buddybar-widget' ) ),
+			array( 'groups', 	__( 'Groups', 'buddybar-widget' ) )
 		);
 
 		foreach ( $keys as $key ) {
