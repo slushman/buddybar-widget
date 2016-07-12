@@ -83,6 +83,7 @@ class Buddybar_Widget {
 		$this->load_dependencies();
 		$this->set_locale();
 		$this->define_widget_hooks();
+		$this->define_public_hooks();
 
 	} // __construct()
 
@@ -127,10 +128,34 @@ class Buddybar_Widget {
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'classes/class-widget.php';
 
+		/**
+		 * The class responsible for defining all actions that occur in the public-facing
+		 * side of the site.
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'classes/class-public.php';
+
 		$this->loader 		= new Buddybar_Widget_Loader();
 		$this->sanitizer 	= new BuddyBar_Widget_Sanitize();
 
 	} // load_dependencies()
+
+	/**
+	 * Register all of the hooks for public-facing functionality.
+	 *
+	 * @since 		0.3
+	 * @access		private
+	 */
+	private function define_public_hooks() {
+
+		$plugin_public = new Buddybar_Widget_Public();
+
+		$this->loader->action( 'buddybar-widget-component-menus', $plugin_public, 'add_component_menu_profile' );
+		$this->loader->action( 'buddybar-widget-component-menus', $plugin_public, 'add_component_menu_activity' );
+		$this->loader->action( 'buddybar-widget-component-menus', $plugin_public, 'add_component_menu_messages' );
+		$this->loader->action( 'buddybar-widget-component-menus', $plugin_public, 'add_component_menu_friends' );
+		$this->loader->action( 'buddybar-widget-component-menus', $plugin_public, 'add_component_menu_groups' );
+
+	} // define_public_hooks()
 
 	/**
 	 * Register all of the hooks shared between public-facing and admin functionality

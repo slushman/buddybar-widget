@@ -31,8 +31,7 @@ class Slushman_BuddyBar_Widget extends WP_Widget {
 	 */
 	function __construct() {
 
-		$this->widget_name 			= 'buddybar_widget';
-
+		$this->widget_name 		= 'buddybar_widget';
 		$name 					= esc_html__( 'BuddyBar Widget', 'buddybar-widget' );
 		$opts['classname'] 		= '';
 		$opts['description'] 	= esc_html__( 'Display the BuddyPress Bar in a widget.', 'buddybar-widget' );
@@ -94,6 +93,10 @@ class Slushman_BuddyBar_Widget extends WP_Widget {
 
 		$widget_string 	= '';
 		$widget_string .= $args['before_widget'];
+
+		/**
+		 * buddybar_widget_title filter hook
+		 */
 		$filtered 		= apply_filters( 'buddybar_widget_title', $instance['title'] );
 		$title 			= empty( $instance['title'] ) ? '' : $filtered;
 
@@ -105,11 +108,23 @@ class Slushman_BuddyBar_Widget extends WP_Widget {
 
 		ob_start();
 
+		/**
+		 * buddybar_widget_wrap_before action hook
+		 */
 		do_action( 'buddybar_widget_wrap_before' );
 
 		if ( is_user_logged_in() ) {
 
-			include( plugin_dir_path( __FILE__ ) . 'views/widget.php' );
+			/**
+			 * buddybar-widget-component-menus action hook
+			 *
+			 * @hooked 		add_component_menu_profile
+			 * @hooked 		add_component_menu_activity
+			 * @hooked 		add_component_menu_messages
+			 * @hooked 		add_component_menu_friends
+			 * @hooked 		add_component_menu_groups
+			 */
+			do_action( 'buddybar-widget-component-menus' );
 
 		} else {
 
@@ -117,6 +132,9 @@ class Slushman_BuddyBar_Widget extends WP_Widget {
 
 		}
 
+		/**
+		 * buddybar_widget_wrap_after action hook
+		 */
 		do_action( 'buddybar_widget_wrap_after' );
 
 		$widget_string .= ob_get_clean();
@@ -159,38 +177,5 @@ class Slushman_BuddyBar_Widget extends WP_Widget {
 		return $instance;
 
 	} // update()
-
-	/**
-	 * Reorders the nav array
-	 *
-	 * @access 	public
-	 * @since 	0.2
-	 *
-	 * @return 	array 		The reordered array
-	 */
-	private function reorder_array( $array ) {
-
-		$temp = array();
-		$keys = array(
-			array( 'activity', 	__( 'Activity', 'buddybar-widget' ) ),
-			array( 'messages', 	__( 'Messages', 'buddybar-widget' ) ),
-			array( 'friends', 	__( 'Friends', 'buddybar-widget' ) ),
-			array( 'groups', 	__( 'Groups', 'buddybar-widget' ) )
-		);
-
-		foreach ( $keys as $key ) {
-
-			if ( key_exists( $key[0], $array ) ) {
-
-				$temp[$key[0]]		= $array[$key[0]];
-				$temp[$key[0]][0] 	= $key[1];
-
-			}
-
-		} // foreach
-
-		return $temp;
-
-	} // reorder_array()
 
 } // class

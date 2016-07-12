@@ -11,7 +11,7 @@
  * Plugin Name:       BuddyBar Widget
  * Plugin URI:        http://slushman.com/plugins/buddybar-widget
  * Description:       The BuddyBar Widget places all the links on BuddyPress’s BuddyBar in a sidebar widget.
- * Version:           0.22
+ * Version:           0.3
  * Author:            Slushman
  * Author URI:        http://slushman.com
  * License:           GPL-0.2+
